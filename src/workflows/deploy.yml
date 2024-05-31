@@ -5,29 +5,33 @@ on:
     branches:
       - main
 
+
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          node-version: '20'
 
-      - name: Setup Node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install
 
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      - name: Upload production-ready build files
+      - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: production-files
+          name: build-artifact
           path: ./dist
+
 
   deploy:
     name: Deploy
