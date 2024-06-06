@@ -14,7 +14,7 @@ function App() {
     <Router>
       {/* <Header/> */}
       <Routes>
-        <Route path="/KalikaShine/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/*" element={<Notfound />} />
       </Routes>
 
